@@ -1,0 +1,27 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+#numpy
+marks=np.array([70,80,90,60,75])
+print("Marks:",marks)
+print("mean:",np.mean(marks))
+print("maximum:",np.max(marks))
+
+#pandas
+data={
+    "Name": ["A","B","c"],
+    "Marks":[70,80,90]
+}
+df=pd.DataFrame(data)
+print("\n Student Data:")
+print(df)
+
+
+# Matplotlib
+plt.bar(df["Name"],df["Marks"])
+plt.xlabel("students")
+plt.ylabel("Marks")
+plt.title("Student Marks")
+plt.show()
+

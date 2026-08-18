@@ -1,0 +1,31 @@
+from collections import deque
+
+def bfs_arrows(graph, start, goal):
+    # Queue stores tuples: (current_node, path_taken_so_far)
+    queue = deque([(start, [start])])
+    visited = {start}
+
+    while queue:
+        current, path = queue.popleft()
+
+        if current == goal:
+            return " → ".join(path)  # Formats path with arrows
+
+        for neighbor in graph[current]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append((neighbor, path + [neighbor]))
+
+    return "No path found"
+
+
+# Example Usage
+unweighted_graph = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D'],
+    'C': ['A', 'D'],
+    'D': ['B', 'C']
+}
+
+path = bfs_arrows(unweighted_graph, 'A', 'D')
+print("BFS Path:", path)  # Output: A → B → D
